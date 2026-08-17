@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: "/wox",
+  basePath: "/WOX.COM",
   images: { unoptimized: true },
   turbopack: {
     root: __dirname,
