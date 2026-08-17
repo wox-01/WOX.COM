@@ -34,7 +34,7 @@ export default function Home() {
           <div
             className="w-[420px] sm:w-[680px] lg:w-[820px] [mask-image:linear-gradient(to_top,black_35%,transparent_92%)] [-webkit-mask-image:linear-gradient(to_top,black_35%,transparent_92%)]"
           >
-            <Image src="/hero-imac.png" alt="WOX" width={1920} height={1440} className="h-auto w-full" />
+            <Image src="/WOX.COM/hero-imac.png" alt="WOX" width={1920} height={1440} className="h-auto w-full" />
           </div>
         </div>
 
@@ -101,7 +101,7 @@ export default function Home() {
               >
                 <TiltImage max={6}>
                   <Image
-                    src="/cv-preview.png"
+                    src="/WOX.COM/cv-preview.png"
                     alt="CV"
                     width={927}
                     height={1200}
