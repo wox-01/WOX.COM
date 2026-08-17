@@ -92,7 +92,7 @@ export default function Home() {
           <Reveal delay={120} className="sm:col-span-5">
             <div className="flex flex-col items-start sm:items-end">
               <a
-                href="/cv.pdf"
+                href="/wox/cv.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor-hover
@@ -114,7 +114,7 @@ export default function Home() {
                 <span>{ui.about.resumeLabel}</span>
                 <Magnetic strength={0.4}>
                   <a
-                    href="/cv.pdf"
+                    href="/wox/cv.pdf"
                     download
                     data-cursor-hover
                     data-cursor-text={ui.about.download}

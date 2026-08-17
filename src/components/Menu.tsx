@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import Link from "next/link";
 import { GITHUB_URL, LINKEDIN_URL, EMAIL } from "@/lib/data";
 import { MenuIcon, CloseIcon } from "@/components/icons";
 import { useContent } from "@/lib/i18n";
@@ -57,7 +58,7 @@ export default function Menu() {
           >
             <nav className="flex flex-col gap-2 px-6 pt-32 sm:px-12 sm:pt-40 lg:px-24">
               {LINKS.map((link, i) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
@@ -70,7 +71,7 @@ export default function Menu() {
                   }}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
 
