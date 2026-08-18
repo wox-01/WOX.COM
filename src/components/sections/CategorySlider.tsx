@@ -9,8 +9,8 @@ import { useContent } from "@/lib/i18n";
 export default function CategorySlider() {
   const { slider } = useContent().ui;
   const SLIDES = [
-    { href: "/web", shape: "/WOX.COM/shape-1.png", ...slider.web },
-    { href: "/mobil", shape: "/WOX.COM/shape-2.png", ...slider.mobile },
+    { href: "/web", shape: "/WOX.COM/shape-1.webp", ...slider.web },
+    { href: "/mobil", shape: "/WOX.COM/shape-2.webp", ...slider.mobile },
   ];
   const [[index, dir], setIndex] = useState([0, 0]);
   const slide = SLIDES[index];

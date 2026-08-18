@@ -52,6 +52,7 @@ export default function CodeMockup() {
   }, [chars, done]);
 
   const lines = CODE.slice(0, chars).split("\n");
+  const fullLines = CODE.split("\n");
 
   return (
     <div className="relative w-full max-w-[560px]">
@@ -74,23 +75,41 @@ export default function CodeMockup() {
           <span className="font-mono text-xs text-muted">rag_pipeline.py</span>
         </div>
 
-        <div className="flex px-2 py-6 font-mono text-[13px] leading-relaxed sm:text-sm">
-          <div className="select-none pr-4 text-right text-white/20">
-            {lines.map((_, i) => (
-              <div key={i}>{i + 1}</div>
-            ))}
+        <div className="relative">
+          {/* Reserves the final block height so typing never shifts the page. */}
+          <div aria-hidden className="invisible flex px-2 py-6 font-mono text-[13px] leading-relaxed sm:text-sm">
+            <div className="select-none pr-4 text-right">
+              {fullLines.map((_, i) => (
+                <div key={i}>{i + 1}</div>
+              ))}
+            </div>
+            <div className="min-w-0 flex-1">
+              {fullLines.map((line, i) => (
+                <div key={i} className="whitespace-pre">
+                  {line.length ? line : " "}
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="min-w-0 flex-1 text-foreground/90">
-            {lines.map((line, i) => (
-              <div key={i} className="whitespace-pre">
-                {highlight(line).map((n) => (
-                  <span key={n.key}>{n.node}</span>
-                ))}
-                {i === lines.length - 1 && (
-                  <span className="animate-pulse text-teal-300">▍</span>
-                )}
-              </div>
-            ))}
+
+          <div className="absolute inset-0 flex px-2 py-6 font-mono text-[13px] leading-relaxed sm:text-sm">
+            <div className="select-none pr-4 text-right text-white/20">
+              {lines.map((_, i) => (
+                <div key={i}>{i + 1}</div>
+              ))}
+            </div>
+            <div className="min-w-0 flex-1 text-foreground/90">
+              {lines.map((line, i) => (
+                <div key={i} className="whitespace-pre">
+                  {highlight(line).map((n) => (
+                    <span key={n.key}>{n.node}</span>
+                  ))}
+                  {i === lines.length - 1 && (
+                    <span className="animate-pulse text-teal-300">▍</span>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

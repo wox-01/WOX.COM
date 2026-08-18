@@ -1,4 +1,4 @@
-import BrowserMockup from "@/components/BrowserMockup";
+import BrowserMockup from "@/components/sections/BrowserMockup";
 
 export default function CategoryHero({
   title,

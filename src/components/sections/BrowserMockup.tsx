@@ -27,7 +27,7 @@ export default function BrowserMockup() {
           style={{ background: "radial-gradient(ellipse 50% 50% at 50% 50%, white, transparent 70%)" }}
         />
         <Image
-          src="/WOX.COM/logo-v2.png"
+          src="/WOX.COM/logo-v2.webp"
           alt="WOX"
           width={520}
           height={160}

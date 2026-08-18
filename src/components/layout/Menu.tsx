@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { GITHUB_URL, LINKEDIN_URL, EMAIL } from "@/lib/data";
-import { MenuIcon, CloseIcon } from "@/components/icons";
+import { MenuIcon, CloseIcon } from "@/components/ui/icons";
 import { useContent } from "@/lib/i18n";
 
 export default function Menu() {

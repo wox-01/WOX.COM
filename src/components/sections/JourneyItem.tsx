@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useContent } from "@/lib/i18n";
 
 export default function JourneyItem({
   date,
@@ -13,6 +14,8 @@ export default function JourneyItem({
   description: string;
   current?: boolean;
 }) {
+  const { journey } = useContent().ui;
+
   return (
     <div className="relative pb-14 pl-8 last:pb-0 sm:pl-10">
       <span className="absolute -left-[4px] top-1 h-[9px] w-[9px] rounded-full border border-border bg-background sm:-left-[4px]" />
@@ -26,7 +29,7 @@ export default function JourneyItem({
       >
         <span className="font-mono text-xs tracking-widest text-muted">
           {date}
-          {current && <span className="ml-2 text-foreground/70">· şu an</span>}
+          {current && <span className="ml-2 text-foreground/70">· {journey.now}</span>}
         </span>
         <div>
           <h3 className="font-display text-xl font-semibold tracking-tight sm:text-2xl">

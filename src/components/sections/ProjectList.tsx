@@ -1,7 +1,7 @@
 "use client";
 
-import Reveal from "@/components/Reveal";
-import { WebIcon, MobileIcon, AiIcon } from "@/components/icons";
+import Reveal from "@/components/ui/Reveal";
+import { WebIcon, MobileIcon, AiIcon } from "@/components/ui/icons";
 import type { Project } from "@/lib/data";
 import { useContent } from "@/lib/i18n";
 

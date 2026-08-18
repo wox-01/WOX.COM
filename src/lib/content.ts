@@ -47,9 +47,10 @@ export type Content = {
       openPdf: string;
       download: string;
     };
-    journey: { eyebrow: string; heading: string };
+    journey: { eyebrow: string; heading: string; now: string };
     qa: { label: string; placeholder: string };
     projectsSection: { eyebrow: string };
+    projectsBanner: string;
     contact: { eyebrow: string; heading: [string, string] };
     projectList: {
       openProject: string;
@@ -62,6 +63,7 @@ export type Content = {
     };
     categoryHero: { web: string; mobile: string };
     webStatement: string;
+    trustStatement: string;
   };
   about: string;
   facts: Fact[];
@@ -101,9 +103,10 @@ export const CONTENT: Record<"tr" | "en", Content> = {
         openPdf: "PDF Aç",
         download: "İndir",
       },
-      journey: { eyebrow: "SÜREÇ", heading: "Buraya kadar gelen yol." },
+      journey: { eyebrow: "SÜREÇ", heading: "Buraya kadar gelen yol.", now: "şu an" },
       qa: { label: "BANA SOR", placeholder: "Yukarıdan bir soru seç." },
       projectsSection: { eyebrow: "PROJELER" },
+      projectsBanner: "Proje Yelpazem",
       contact: {
         eyebrow: "İLETİŞİM",
         heading: ["Staj, proje ya da sadece merhaba —", "yazman yeterli."],
@@ -131,6 +134,8 @@ export const CONTENT: Record<"tr" | "en", Content> = {
       },
       webStatement:
         "İyi bir web sitesi sadece güzel görünmez — güven verir, yönlendirir, dönüştürür.",
+      trustStatement:
+        "Çoğu yazılım demoda iyi görünür, üretimde çöker. Ben güvenle kullanılabilecek tarafı kuruyorum.",
     },
     about:
       "Bilgisayar Mühendisliği öğrencisiyim; LLM, RAG ve uygulamalı yapay zeka mühendisliğine odaklanıyorum. Mobil ve full-stack geliştirme geçmişim var (Flutter, Firebase, PHP/MySQL).",
@@ -302,9 +307,10 @@ export const CONTENT: Record<"tr" | "en", Content> = {
         openPdf: "Open PDF",
         download: "Download",
       },
-      journey: { eyebrow: "JOURNEY", heading: "The road so far." },
+      journey: { eyebrow: "JOURNEY", heading: "The road so far.", now: "present" },
       qa: { label: "ASK ME", placeholder: "Pick a question above." },
       projectsSection: { eyebrow: "PROJECTS" },
+      projectsBanner: "My Project Range",
       contact: {
         eyebrow: "CONTACT",
         heading: ["Internship, project, or just a hello —", "reach out."],
@@ -332,6 +338,8 @@ export const CONTENT: Record<"tr" | "en", Content> = {
       },
       webStatement:
         "A good website doesn't just look good — it builds trust, guides, and converts.",
+      trustStatement:
+        "Most software looks good in a demo and breaks in production. I build the part people can trust.",
     },
     about:
       "I'm a Computer Engineering student focused on LLMs, RAG, and applied AI engineering. I have a background in mobile and full-stack development (Flutter, Firebase, PHP/MySQL).",

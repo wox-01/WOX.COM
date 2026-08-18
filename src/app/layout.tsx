@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "lenis/dist/lenis.css";
-import CustomCursor from "@/components/CustomCursor";
-import SmoothScroll from "@/components/SmoothScroll";
+import CustomCursor from "@/components/layout/CustomCursor";
+import SmoothScroll from "@/components/layout/SmoothScroll";
+import PageTransition from "@/components/layout/PageTransition";
 import { LanguageProvider } from "@/lib/i18n";
 
 const spaceGrotesk = Space_Grotesk({
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <LanguageProvider>
           <SmoothScroll />
           <CustomCursor />
+          <PageTransition />
           {children}
         </LanguageProvider>
       </body>

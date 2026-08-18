@@ -1,9 +1,9 @@
 "use client";
 
 import { useContent } from "@/lib/i18n";
-import Nav from "@/components/Nav";
-import CategoryHero from "@/components/CategoryHero";
-import ProjectList from "@/components/ProjectList";
+import Nav from "@/components/layout/Nav";
+import CategoryHero from "@/components/sections/CategoryHero";
+import ProjectList from "@/components/sections/ProjectList";
 
 export default function MobileProjectsPage() {
   const { ui, projects } = useContent();

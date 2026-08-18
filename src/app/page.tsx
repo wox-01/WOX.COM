@@ -3,20 +3,21 @@
 import Image from "next/image";
 import { LINKEDIN_URL, GITHUB_URL, EMAIL } from "@/lib/data";
 import { useContent } from "@/lib/i18n";
-import Nav from "@/components/Nav";
-import Reveal from "@/components/Reveal";
-import Magnetic from "@/components/Magnetic";
-import TiltImage from "@/components/TiltImage";
-import { GithubIcon, LinkedinIcon, MailIcon, DownloadIcon } from "@/components/icons";
-import LiquidBlob from "@/components/LiquidBlob";
-import DotGrid from "@/components/DotGrid";
-import JourneyItem from "@/components/JourneyItem";
-import TimelineProgress from "@/components/TimelineProgress";
-import Counter from "@/components/Counter";
-import CodeMockup from "@/components/CodeMockup";
-import InteractiveQA from "@/components/InteractiveQA";
-import ProjectList from "@/components/ProjectList";
-import CategorySlider from "@/components/CategorySlider";
+import Nav from "@/components/layout/Nav";
+import Reveal from "@/components/ui/Reveal";
+import Magnetic from "@/components/ui/Magnetic";
+import TiltImage from "@/components/ui/TiltImage";
+import { GithubIcon, LinkedinIcon, MailIcon, DownloadIcon } from "@/components/ui/icons";
+import LiquidBlob from "@/components/ui/LiquidBlob";
+import DotGrid from "@/components/ui/DotGrid";
+import JourneyItem from "@/components/sections/JourneyItem";
+import TimelineProgress from "@/components/sections/TimelineProgress";
+import Counter from "@/components/ui/Counter";
+import CodeMockup from "@/components/sections/CodeMockup";
+import InteractiveQA from "@/components/sections/InteractiveQA";
+import ProjectList from "@/components/sections/ProjectList";
+import CategorySlider from "@/components/sections/CategorySlider";
+import TypewriterText from "@/components/sections/TypewriterText";
 
 export default function Home() {
   const { ui, about, facts, journey, stats, qa, skills, projects } = useContent();
@@ -34,7 +35,14 @@ export default function Home() {
           <div
             className="w-[420px] sm:w-[680px] lg:w-[820px] [mask-image:linear-gradient(to_top,black_35%,transparent_92%)] [-webkit-mask-image:linear-gradient(to_top,black_35%,transparent_92%)]"
           >
-            <Image src="/WOX.COM/hero-imac.png" alt="WOX" width={1920} height={1440} className="h-auto w-full" />
+            <Image
+              src="/WOX.COM/hero-imac.webp"
+              alt="WOX"
+              width={1700}
+              height={1275}
+              priority
+              className="h-auto w-full"
+            />
           </div>
         </div>
 
@@ -63,7 +71,7 @@ export default function Home() {
 
       {/* About */}
       <section id="about" className="relative scroll-mt-20 overflow-hidden px-6 py-24 sm:px-12 lg:px-24">
-        <div className="relative grid grid-cols-1 gap-16 sm:grid-cols-12">
+        <div className="relative grid grid-cols-1 gap-16 sm:grid-cols-12 sm:items-center">
           <Reveal className="sm:col-span-7">
             <h2 className="mb-6 font-mono text-sm tracking-widest text-muted">
               {ui.about.eyebrow}
@@ -90,7 +98,7 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={120} className="sm:col-span-5">
-            <div className="flex flex-col items-start sm:items-end">
+            <div className="flex flex-col items-center sm:items-end">
               <a
                 href="/WOX.COM/cv.pdf"
                 target="_blank"
@@ -101,10 +109,10 @@ export default function Home() {
               >
                 <TiltImage max={6}>
                   <Image
-                    src="/WOX.COM/cv-preview.png"
+                    src="/WOX.COM/cv-preview.webp"
                     alt="CV"
-                    width={927}
-                    height={1200}
+                    width={600}
+                    height={777}
                     className="w-full h-auto rounded-lg border border-border"
                   />
                 </TiltImage>
@@ -128,6 +136,11 @@ export default function Home() {
             </div>
           </Reveal>
         </div>
+      </section>
+
+      {/* Trust statement */}
+      <section className="flex min-h-[60vh] items-center justify-center px-6 py-24 sm:px-12 lg:px-24">
+        <TypewriterText text={ui.trustStatement} />
       </section>
 
       {/* Journey */}
@@ -199,11 +212,27 @@ export default function Home() {
 
       <CategorySlider />
 
+      {/* Projects banner */}
+      <section className="py-24">
+        <h2 className="mb-10 px-6 text-center font-display text-5xl font-semibold leading-none tracking-tight text-foreground sm:px-12 sm:text-7xl lg:px-24 lg:text-8xl">
+          {ui.projectsBanner}
+        </h2>
+        <div className="sm:px-12 lg:px-24">
+          <Image
+            src="/WOX.COM/projects-banner.webp"
+            alt=""
+            width={1536}
+            height={1024}
+            className="h-auto w-full sm:rounded-2xl"
+          />
+        </div>
+      </section>
+
       {/* Projects */}
       <section id="projects" className="relative scroll-mt-20 overflow-hidden px-6 py-24 sm:px-12 lg:px-24">
         <DotGrid />
         <div className="relative mb-16 flex items-baseline justify-between">
-          <h2 className="font-mono text-sm tracking-widest text-muted">
+          <h2 className="font-mono text-xl tracking-widest text-muted sm:text-2xl">
             {ui.projectsSection.eyebrow}
           </h2>
           <span className="font-mono text-xs text-muted">
