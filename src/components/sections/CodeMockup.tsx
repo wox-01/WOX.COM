@@ -75,9 +75,9 @@ export default function CodeMockup() {
           <span className="font-mono text-xs text-muted">rag_pipeline.py</span>
         </div>
 
-        <div className="relative">
+        <div className="relative overflow-x-auto">
           {/* Reserves the final block height so typing never shifts the page. */}
-          <div aria-hidden className="invisible flex px-2 py-6 font-mono text-[13px] leading-relaxed sm:text-sm">
+          <div aria-hidden className="invisible flex w-max min-w-full px-2 py-6 font-mono text-[13px] leading-relaxed sm:text-sm">
             <div className="select-none pr-4 text-right">
               {fullLines.map((_, i) => (
                 <div key={i}>{i + 1}</div>
@@ -92,7 +92,7 @@ export default function CodeMockup() {
             </div>
           </div>
 
-          <div className="absolute inset-0 flex px-2 py-6 font-mono text-[13px] leading-relaxed sm:text-sm">
+          <div className="absolute inset-0 flex w-max min-w-full px-2 py-6 font-mono text-[13px] leading-relaxed sm:text-sm">
             <div className="select-none pr-4 text-right text-white/20">
               {lines.map((_, i) => (
                 <div key={i}>{i + 1}</div>

@@ -33,7 +33,7 @@ export default function Home() {
         <LiquidBlob className="-left-1/4 top-1/4 h-[700px] w-[700px]" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center">
           <div
-            className="w-[420px] sm:w-[680px] lg:w-[820px] [mask-image:linear-gradient(to_top,black_35%,transparent_92%)] [-webkit-mask-image:linear-gradient(to_top,black_35%,transparent_92%)]"
+            className="w-[92vw] max-w-[420px] sm:w-[680px] lg:w-[820px] [mask-image:linear-gradient(to_top,black_35%,transparent_92%)] [-webkit-mask-image:linear-gradient(to_top,black_35%,transparent_92%)]"
           >
             <Image
               src="/WOX.COM/hero-imac.webp"
