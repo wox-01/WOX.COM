@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense, lazy } from "react";
-import CodeMockup from "@/components/sections/CodeMockup";
+import SplashScreen from "@/components/layout/SplashScreen";
 
 const Spline = lazy(() => import("@splinetool/react-spline"));
 
@@ -12,8 +12,11 @@ export default function HeroScene({ className = "" }: { className?: string }) {
     <div className={`hero-scene relative ${className}`}>
       <Suspense
         fallback={
-          <div className="flex h-full w-full items-center justify-center">
-            <CodeMockup />
+          <div
+            className="absolute inset-0 flex items-center justify-center overflow-hidden bg-background"
+            aria-hidden
+          >
+            <SplashScreen />
           </div>
         }
       >
