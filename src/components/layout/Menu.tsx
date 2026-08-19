@@ -17,8 +17,16 @@ export default function Menu() {
   ];
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [atTop, setAtTop] = useState(true);
 
   useEffect(() => setMounted(true), []);
+
+  useEffect(() => {
+    const onScroll = () => setAtTop(window.scrollY < 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -34,6 +42,8 @@ export default function Menu() {
     };
   }, [open]);
 
+  const showLabel = atTop && !open;
+
   return (
     <>
       <button
@@ -41,9 +51,40 @@ export default function Menu() {
         onClick={() => setOpen((o) => !o)}
         data-cursor-hover
         aria-label={open ? content.ui.nav.closeMenu : content.ui.nav.openMenu}
-        className="relative z-[9997] flex h-11 w-11 items-center justify-center rounded-full border border-border bg-white/[0.03] text-foreground/80 transition-colors hover:border-foreground/30 hover:text-foreground"
+        className={`relative z-[9997] flex h-11 items-center justify-center overflow-hidden rounded-full border border-border bg-white/[0.03] text-foreground/80 transition-[width,border-color,color] duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-foreground/30 hover:text-foreground ${
+          showLabel ? "w-24" : "w-11"
+        }`}
       >
-        {open ? <CloseIcon className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
+        <span
+          className="absolute inset-0 flex items-center justify-center font-mono text-xs tracking-widest transition-opacity ease-[cubic-bezier(0.16,1,0.3,1)]"
+          style={{
+            opacity: showLabel && !open ? 1 : 0,
+            transitionDuration: showLabel && !open ? "300ms" : "120ms",
+            transitionDelay: showLabel && !open ? "180ms" : "0ms",
+          }}
+        >
+          {content.ui.nav.menuLabel}
+        </span>
+        <span
+          className="absolute inset-0 flex items-center justify-center transition-opacity ease-[cubic-bezier(0.16,1,0.3,1)]"
+          style={{
+            opacity: !showLabel && !open ? 1 : 0,
+            transitionDuration: !showLabel && !open ? "300ms" : "120ms",
+            transitionDelay: !showLabel && !open ? "180ms" : "0ms",
+          }}
+        >
+          <MenuIcon className="h-5 w-5" />
+        </span>
+        <span
+          className="absolute inset-0 flex items-center justify-center transition-opacity ease-[cubic-bezier(0.16,1,0.3,1)]"
+          style={{
+            opacity: open ? 1 : 0,
+            transitionDuration: open ? "300ms" : "120ms",
+            transitionDelay: open ? "180ms" : "0ms",
+          }}
+        >
+          <CloseIcon className="h-5 w-5" />
+        </span>
       </button>
 
       {mounted &&

@@ -1,6 +1,8 @@
 "use client";
 
+import { useSyncExternalStore } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { LINKEDIN_URL, GITHUB_URL, EMAIL } from "@/lib/data";
 import { useContent } from "@/lib/i18n";
 import Nav from "@/components/layout/Nav";
@@ -13,28 +15,48 @@ import DotGrid from "@/components/ui/DotGrid";
 import JourneyItem from "@/components/sections/JourneyItem";
 import TimelineProgress from "@/components/sections/TimelineProgress";
 import Counter from "@/components/ui/Counter";
-import CodeMockup from "@/components/sections/CodeMockup";
 import InteractiveQA from "@/components/sections/InteractiveQA";
 import ProjectList from "@/components/sections/ProjectList";
 import CategorySlider from "@/components/sections/CategorySlider";
 import TypewriterText from "@/components/sections/TypewriterText";
+import ScrollRevealText from "@/components/sections/ScrollRevealText";
+import HeroScene from "@/components/sections/HeroScene";
+
+function subscribeDesktop(callback: () => void) {
+  const mq = window.matchMedia("(min-width: 640px)");
+  mq.addEventListener("change", callback);
+  return () => mq.removeEventListener("change", callback);
+}
+
+function getDesktopSnapshot() {
+  return window.matchMedia("(min-width: 640px)").matches;
+}
+
+function getDesktopServerSnapshot() {
+  return false;
+}
 
 export default function Home() {
   const { ui, about, facts, journey, stats, qa, skills, projects } = useContent();
+  const isDesktop = useSyncExternalStore(subscribeDesktop, getDesktopSnapshot, getDesktopServerSnapshot);
 
   return (
     <main className="flex-1">
       <Nav />
       {/* Hero */}
-      <section
-        id="top"
-        className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 py-32 sm:px-12 lg:px-24"
-      >
-        <LiquidBlob className="-left-1/4 top-1/4 h-[700px] w-[700px]" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center">
-          <div
-            className="w-[92vw] max-w-[420px] sm:w-[680px] lg:w-[820px] [mask-image:linear-gradient(to_top,black_35%,transparent_92%)] [-webkit-mask-image:linear-gradient(to_top,black_35%,transparent_92%)]"
-          >
+      <div id="top">
+        {/* Mobil: Mac fotoğrafı + isim */}
+        <section className="relative flex flex-col items-center overflow-hidden bg-background px-6 pb-16 pt-32 text-center sm:hidden">
+          <div className="fade-up relative z-10">
+            <h1 className="font-display text-5xl font-semibold tracking-tight text-foreground">
+              {ui.hero.name}
+            </h1>
+            <p className="mt-5 font-mono text-xs tracking-[0.3em] text-foreground/70">
+              {ui.hero.eyebrow.toUpperCase()}
+            </p>
+          </div>
+
+          <div className="fade-up mt-10 w-[78vw] max-w-[420px]" style={{ animationDelay: "120ms" }}>
             <Image
               src="/WOX.COM/hero-imac.webp"
               alt="WOX"
@@ -44,33 +66,18 @@ export default function Home() {
               className="h-auto w-full"
             />
           </div>
-        </div>
+        </section>
 
-        <div className="relative grid grid-cols-1 items-center gap-16 sm:grid-cols-2 sm:gap-12">
-          <div className="fade-up">
-            <p className="mb-5 font-mono text-sm tracking-widest text-foreground/70 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
-              {ui.hero.name} — {ui.hero.eyebrow}
-            </p>
-            <h1 className="max-w-xl font-display text-4xl font-semibold leading-tight tracking-tight text-foreground drop-shadow-[0_2px_16px_rgba(0,0,0,0.85)] sm:text-5xl">
-              {ui.hero.headingPre}
-              <br />
-              {ui.hero.headingAccentPre}
-              <span className="text-teal-300">{ui.hero.headingAccent}</span>
-              {ui.hero.headingAccentPost}
-            </h1>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-foreground/70 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
-              {ui.hero.sub}
-            </p>
-          </div>
-
-          <div className="fade-up flex justify-center sm:justify-end" style={{ animationDelay: "150ms" }}>
-            <CodeMockup />
-          </div>
-        </div>
-      </section>
+        {/* Masaüstü: Spline sahnesi */}
+        {isDesktop && (
+          <section className="relative hidden h-dvh overflow-hidden bg-background sm:block">
+            <HeroScene className="h-full w-full" />
+          </section>
+        )}
+      </div>
 
       {/* About */}
-      <section id="about" className="relative scroll-mt-20 overflow-hidden px-6 py-24 sm:px-12 lg:px-24">
+      <section id="about" className="relative scroll-mt-20 overflow-hidden px-6 pb-24 pt-0 sm:px-12 sm:pt-36 lg:px-24">
         <div className="relative grid grid-cols-1 gap-16 sm:grid-cols-12 sm:items-center">
           <Reveal className="sm:col-span-7">
             <h2 className="mb-6 font-mono text-sm tracking-widest text-muted">
@@ -212,12 +219,20 @@ export default function Home() {
 
       <CategorySlider />
 
+      <ScrollRevealText text={ui.goalStatement} />
+
       {/* Projects banner */}
-      <section className="py-24">
-        <h2 className="mb-10 px-6 text-center font-display text-5xl font-semibold leading-none tracking-tight text-foreground sm:px-12 sm:text-7xl lg:px-24 lg:text-8xl">
+      <section className="relative overflow-hidden py-24">
+        <motion.h2
+          initial={{ opacity: 0, y: 110 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="relative z-0 mb-10 px-6 text-center font-display text-5xl font-semibold leading-none tracking-tight text-foreground sm:px-12 sm:text-7xl lg:px-24 lg:text-8xl"
+        >
           {ui.projectsBanner}
-        </h2>
-        <div className="sm:px-12 lg:px-24">
+        </motion.h2>
+        <div className="relative z-10 sm:px-12 lg:px-24">
           <Image
             src="/WOX.COM/projects-banner.webp"
             alt=""

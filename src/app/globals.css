@@ -39,6 +39,14 @@ body {
   color: #000000;
 }
 
+/* Dokunmatik ekranda 3D sahne kamera sürüklemeyi (orbit) yakalayıp sayfa
+   scroll'unu engellemesin diye touch etkileşimini kapatıyoruz. */
+@media (pointer: coarse) {
+  .hero-scene {
+    pointer-events: none;
+  }
+}
+
 a,
 button {
   cursor: none;

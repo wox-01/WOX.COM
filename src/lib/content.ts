@@ -26,6 +26,7 @@ export type Content = {
       about: string;
       projects: string;
       contact: string;
+      menuLabel: string;
       openMenu: string;
       closeMenu: string;
       backToTop: string;
@@ -64,6 +65,7 @@ export type Content = {
     categoryHero: { web: string; mobile: string };
     webStatement: string;
     trustStatement: string;
+    goalStatement: string;
   };
   about: string;
   facts: Fact[];
@@ -82,13 +84,14 @@ export const CONTENT: Record<"tr" | "en", Content> = {
         about: "Hakkımda",
         projects: "Projeler",
         contact: "İletişim",
+        menuLabel: "Menü",
         openMenu: "Menüyü aç",
         closeMenu: "Menüyü kapat",
         backToTop: "Başa dön",
       },
       hero: {
         name: "CAN YAŞA",
-        eyebrow: "YAPAY ZEKA MÜHENDİSLİĞİ",
+        eyebrow: "Bilgisayar Mühendisi",
         headingPre: "Çoğu RAG tutorial'ı embed ve retrieve'de biter.",
         headingAccentPre: "Ben ",
         headingAccent: "bitmeyen",
@@ -136,6 +139,8 @@ export const CONTENT: Record<"tr" | "en", Content> = {
         "İyi bir web sitesi sadece güzel görünmez — güven verir, yönlendirir, dönüştürür.",
       trustStatement:
         "Çoğu yazılım demoda iyi görünür, üretimde çöker. Ben güvenle kullanılabilecek tarafı kuruyorum.",
+      goalStatement:
+        "Hedefim tutorial değil, gerçek problemleri çözen uygulamalı yapay zeka sistemleri kurmak.",
     },
     about:
       "Bilgisayar Mühendisliği öğrencisiyim; LLM, RAG ve uygulamalı yapay zeka mühendisliğine odaklanıyorum. Mobil ve full-stack geliştirme geçmişim var (Flutter, Firebase, PHP/MySQL).",
@@ -286,13 +291,14 @@ export const CONTENT: Record<"tr" | "en", Content> = {
         about: "About",
         projects: "Projects",
         contact: "Contact",
+        menuLabel: "Menu",
         openMenu: "Open menu",
         closeMenu: "Close menu",
         backToTop: "Back to top",
       },
       hero: {
         name: "CAN YAŞA",
-        eyebrow: "AI ENGINEERING",
+        eyebrow: "Computer Engineer",
         headingPre: "Most RAG tutorials end at embed and retrieve.",
         headingAccentPre: "I build the part that ",
         headingAccent: "never ends",
@@ -340,6 +346,8 @@ export const CONTENT: Record<"tr" | "en", Content> = {
         "A good website doesn't just look good — it builds trust, guides, and converts.",
       trustStatement:
         "Most software looks good in a demo and breaks in production. I build the part people can trust.",
+      goalStatement:
+        "My goal isn't tutorials — it's building applied AI systems that solve real problems.",
     },
     about:
       "I'm a Computer Engineering student focused on LLMs, RAG, and applied AI engineering. I have a background in mobile and full-stack development (Flutter, Firebase, PHP/MySQL).",
